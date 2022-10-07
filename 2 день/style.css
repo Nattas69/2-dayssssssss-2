@@ -1,0 +1,95 @@
+*{
+font-family: 'biba', arial;;
+font-size: 1vw;
+margin: 0;
+padding: 0;
+}
+:root{
+--color: #141414;
+--form: calc(1vw + 1vh);
+--transition: 1.25s cubic-bezier(.2, .5, 0, 1);
+--transition-cursor: 2s cubic-bezier(.05, .5, 0, 1);
+}
+@font-face{
+    font-family:  'biba' 'biba.woff2';
+    src: url("..\2 день\fonts\biba.woff2");
+}
+body{
+background: #ffffff;
+margin: 0;
+}   
+.magic-list{
+    font-family: biba, sans-serif;
+    display: flex;
+    flex-direction: column;
+    font-size: calc(var(--form) * 2);
+    padding: calc(var(--form) *2);
+}
+.magic-list__item {
+    cursor: none;
+    color: var(--c);
+    text-decoration: none;
+    display: block;
+    line-height: .9;
+    padding: calc(var(--i) * 3) calc(var(--i) * 7.5);
+    border-bottom: 1px solid rgb(0 0 0 / .09);
+}
+.magic-list__item:first-child {
+    border-top: 1.5px solid var(--c);
+}
+.magic-list__item::before {
+
+    position: absolute;
+    font-size: calc(var(--i) * .95);
+    margin-left: calc(var(--i) * -2.25);
+    margin-top: calc(var(--i) / 2);
+    letter-spacing: .5px;
+    transition: transform var(--transition);
+}
+a{
+    font-size: calc(120px / 2);
+    margin: calc(5px * 2);
+    text-decoration: none;
+    color: #141414;
+    line-height: 200px;
+}
+.magic-list_header{
+    transition: transform 
+    var(--transition);
+}
+.magic-list__item:hover .magic-list__header,
+.magic-list__item:hover::before {
+transform: translate3d(calc(var(--i) * -5), 0, 0);
+}
+.cursor {
+transition: transform var(--transition-cursor), height 1s ease;
+width: calc(var(--i) * 20);
+height: calc(var(--i) * 15);
+position: fixed;
+width: var(--width);
+height: 0;
+top: calc(var(--height) * -.5);
+left: calc(var(--width) * -.5);
+overflow: hidden;
+transform: translate3d(var(--move-x), var(--move-y), 0);
+transition: transform var(--transition-cursor), height 1s ease;
+z-index: -1;
+will-change: transform;
+}
+.magic-list__item:hover .cursor {
+-cursor-transform: translate3d(calc(var(--move-x) / -5), calc(var(--move-y) / -5), 0);
+position: relative;
+width: calc(var(--width) * 2);
+height: calc(var(--height) * 2);
+top: calc(var(--height) * -.4);
+left: calc(var(--width) * -.25);
+background-size: cover;
+background-position: center;
+transform: var(--cursor-transform) scale(1.5);
+transition: transform var(--transition-cursor);
+height: var(--height);
+}
+
+.cursor_image{
+transition: transform var(--transition-cursor);
+}
